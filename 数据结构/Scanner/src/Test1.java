@@ -13,6 +13,7 @@ public class Test1 {
         BufferedReader buff = null;
         //将文本文件中的内容也读取放到缓冲区中,然后调用readLine()方法将缓冲区中的全部内容转为字符串
         buff = new BufferedReader(new FileReader("F:"+File.separator+"1"+ File.separator+"test.txt"));
+        /* buff = new BufferedReader(new FileReader("E:\\资料\\nice.txt"));*/
         //File.separator 代表系统默认的分隔符，保证无论哪种情况下都是正确的
         //Windows下的目录分隔符是 '\'  而 Linux 下的目录分隔符是 '/'
         String str = null;
@@ -53,6 +54,7 @@ public class Test1 {
         int a = 0;
         System.out.println(a);
         int sum = Integer.parseInt(JOptionPane.showInputDialog("Please Enter"));
+        //JOptionPane.showMessageDialog( , )方法的第一个参数是对话框的父组件，第二个参数是要显示的消息。
         JOptionPane.showMessageDialog(null,sum);
     }
     public static void scan3(){
@@ -62,6 +64,6 @@ public class Test1 {
     }
 
     public static void main(String[] args) throws IOException {
-        scan1();
+        scan();
     }
 }
