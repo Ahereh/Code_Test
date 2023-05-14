@@ -5,6 +5,9 @@ package polymorphism;
  * @Description 多态中方法的重写(重写是多态的一种表现)
  * 访问权限大小关系：
  * public > protected > default > private
+ *
+ * 多态的优点：（1）降低代码圈复杂度 （2）可扩展能力强
+ *      缺点： 代码的运行效率低
  * 【注意】private不能修饰重写方法
  * @Date 2023/4/29 17:38
  **/
@@ -78,12 +81,31 @@ class Derived extends Base {
         return a+b;
     }
 }
-
+class Derived2 extends Base{
+    @Override
+    protected void method1() {
+        System.out.println("子类2");
+    }
+}
 public class Test1 {
     public static void main(String[] args) {
         Base base = new Base();
-        Base base1 = new Derived();
+        Base base1 = new Derived();     //向上转型
+        Base base2 = new Derived2();     //向上转型
+
         System.out.println(base.method(2));
         System.out.println(base1.method(2));
+
+
+        if(base1 instanceof Derived){
+            Derived derived = (Derived) base1;  //向下转型
+            //instanceof关键字 可以检查该derived引用对象是否引用正确的 类(可以提高向下转型的安全性)
+            System.out.println("Security!");
+        }
+        if(base1 instanceof Derived2){
+            //因为base1引用的是Derived类，不是Derived2，所以instanceof检查后返回false
+            Derived2 derived2 = (Derived2) base1 ;
+            System.out.println("Security!");
+        }
     }
 }
